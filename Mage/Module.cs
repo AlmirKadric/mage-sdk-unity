@@ -27,8 +27,9 @@ namespace Wizcorp.MageSDK.MageClient
 		//
 		protected virtual string CommandPrefix
 		{
-			get {
-				return null;
+			get
+			{
+				return this.GetType().Name.ToLower();
 			}
 		}
 
@@ -43,7 +44,8 @@ namespace Wizcorp.MageSDK.MageClient
 		{
 			var commandStatus = new UserCommandStatus();
 
-			Mage.CommandCenter.SendCommand(CommandPrefix + "." + commandName, arguments, (error, result) => {
+			Mage.CommandCenter.SendCommand(CommandPrefix + "." + commandName, arguments, (error, result) =>
+			{
 				commandStatus.Error = error;
 				commandStatus.Result = result;
 				commandStatus.Done = true;
